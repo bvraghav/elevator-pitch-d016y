@@ -1,0 +1,427 @@
+Debugging CONFIG
+  DE:10000 DS:8000 DU:14000 DR:20000 LAT:800 LMAX:10 
+Debugging SIGNAL VECTOR:
+  TS:10000 WHERE:0 LVL:2 SIGDIR:1 
+  TS:78000 WHERE:0 LVL:7 SIGDIR:-1 
+  TS:66000 WHERE:1 LVL:8 
+  TS:88000 WHERE:0 LVL:3 SIGDIR:1 
+  TS:65000 WHERE:0 LVL:1 SIGDIR:-1 
+  TS:216000 WHERE:1 LVL:5 
+
+Debugging Signal Queue:
+  TS:10000 WHERE:0 LVL:2 SIGDIR:1 
+  TS:65000 WHERE:0 LVL:1 SIGDIR:-1 
+  TS:66000 WHERE:1 LVL:8 
+  TS:78000 WHERE:0 LVL:7 SIGDIR:-1 
+  TS:88000 WHERE:0 LVL:3 SIGDIR:1 
+  TS:216000 WHERE:1 LVL:5 
+Debugging Elevator:
+Debugging CONFIG
+  DE:10000 DS:8000 DU:14000 DR:20000 LAT:800 LMAX:10 
+STATE:   L0:0 L1:0 T0:0 D:0 DIR:1 
+Debugging CURQ:
+  qMax:0
+  Q: 0 0 
+Debugging CURQ:
+  qMax:0
+  Q: 0 0 
+Debugging UPQ:
+  qMax:0
+  Q: Empty
+Debugging DNQ:
+  qMax:27
+  Q: Empty
+MAIN: @i:0 signalQ.size:6 el->CURQ.size:2 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):10000 getNext(el):0
+  STATE: STATE:   L0:0 L1:0 T0:0 D:0 DIR:1 
+Debug CURQ: sizeBeforePop:2 sizeAfterPop:1
+  CURQ: QMAX:0 Q: 0 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:1 signalQ.size:6 el->CURQ.size:1 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):10000 getNext(el):20000
+  STATE: STATE:   L0:0 L1:0 T0:0 D:20000 DIR:1 
+enQ: with dir:1 m:6
+  m:6 > mx:0
+  toQ: 0 
+  toQ: 0 1 2 4 5 
+  toQ: QMAX:6 Q: 0 1 2 4 5 6 6 
+  CURQ: QMAX:6 Q: 0 1 2 4 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:2 signalQ.size:5 el->CURQ.size:7 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):65000 getNext(el):20000
+  STATE: STATE:   L0:0 L1:0 T0:0 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:7 sizeAfterPop:6
+  CURQ: QMAX:6 Q: 1 2 4 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:3 signalQ.size:5 el->CURQ.size:6 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):65000 getNext(el):40000
+  STATE: STATE:   L0:0 L1:0 T0:20000 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:6 sizeAfterPop:5
+  CURQ: QMAX:6 Q: 2 4 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:4 signalQ.size:5 el->CURQ.size:5 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):65000 getNext(el):50000
+  STATE: STATE:   L0:0 L1:1 T0:40000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:5 sizeAfterPop:4
+  CURQ: QMAX:6 Q: 4 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:5 signalQ.size:5 el->CURQ.size:4 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):65000 getNext(el):64000
+  STATE: STATE:   L0:1 L1:2 T0:50000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:4 sizeAfterPop:3
+  CURQ: QMAX:6 Q: 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:6 signalQ.size:5 el->CURQ.size:3 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):65000 getNext(el):72000
+  STATE: STATE:   L0:2 L1:4 T0:64000 D:8000 DIR:1 
+enQ: with dir:1 m:3
+  toQ: QMAX:3 Q: 3 3 
+  CURQ: QMAX:6 Q: 5 6 6 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:3 Q: 3 3 
+MAIN: @i:7 signalQ.size:4 el->CURQ.size:3 el->UPQ.size:0 el->DNQ.size:2
+  getNext(signalQ):66000 getNext(el):72000
+  STATE: STATE:   L0:2 L1:4 T0:64000 D:8000 DIR:1 
+enQ: with dir:1 m:24
+  m:24 > mx:6
+  toQ: 5 6 6 
+  toQ: 5 6 6 7 8 10 11 13 14 16 17 19 20 22 23 
+  toQ: QMAX:24 Q: 5 6 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  CURQ: QMAX:24 Q: 5 6 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:3 Q: 3 3 
+MAIN: @i:8 signalQ.size:3 el->CURQ.size:17 el->UPQ.size:0 el->DNQ.size:2
+  getNext(signalQ):78000 getNext(el):72000
+  STATE: STATE:   L0:2 L1:4 T0:64000 D:8000 DIR:1 
+Debug CURQ: sizeBeforePop:17 sizeAfterPop:16
+  CURQ: QMAX:24 Q: 6 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:3 Q: 3 3 
+MAIN: @i:9 signalQ.size:3 el->CURQ.size:16 el->UPQ.size:0 el->DNQ.size:2
+  getNext(signalQ):78000 getNext(el):86000
+  STATE: STATE:   L0:4 L1:5 T0:72000 D:14000 DIR:1 
+enQ: with dir:1 m:21
+  m:21 > mx:3
+  toQ: 3 3 
+  toQ: 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  toQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  CURQ: QMAX:24 Q: 6 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:10 signalQ.size:2 el->CURQ.size:16 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):88000 getNext(el):86000
+  STATE: STATE:   L0:4 L1:5 T0:72000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:16 sizeAfterPop:15
+  CURQ: QMAX:24 Q: 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:11 signalQ.size:2 el->CURQ.size:15 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):88000 getNext(el):96000
+  STATE: STATE:   L0:5 L1:6 T0:86000 D:10000 DIR:1 
+enQ: with dir:1 m:9
+  toQ: 6 7 8 10 11 13 14 16 17 19 20 22 23 24 24 
+  toQ: QMAX:24 Q: 6 7 8 9 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  CURQ: QMAX:24 Q: 6 7 8 9 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:12 signalQ.size:1 el->CURQ.size:17 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):96000
+  STATE: STATE:   L0:5 L1:6 T0:86000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:17 sizeAfterPop:16
+  CURQ: QMAX:24 Q: 7 8 9 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:13 signalQ.size:1 el->CURQ.size:16 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):116000
+  STATE: STATE:   L0:6 L1:6 T0:96000 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:16 sizeAfterPop:15
+  CURQ: QMAX:24 Q: 8 9 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:14 signalQ.size:1 el->CURQ.size:15 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):126000
+  STATE: STATE:   L0:6 L1:7 T0:116000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:15 sizeAfterPop:14
+  CURQ: QMAX:24 Q: 9 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:15 signalQ.size:1 el->CURQ.size:14 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):140000
+  STATE: STATE:   L0:7 L1:8 T0:126000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:14 sizeAfterPop:13
+  CURQ: QMAX:24 Q: 9 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:16 signalQ.size:1 el->CURQ.size:13 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):150000
+  STATE: STATE:   L0:8 L1:9 T0:140000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:13 sizeAfterPop:12
+  CURQ: QMAX:24 Q: 10 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:17 signalQ.size:1 el->CURQ.size:12 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):170000
+  STATE: STATE:   L0:9 L1:9 T0:150000 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:12 sizeAfterPop:11
+  CURQ: QMAX:24 Q: 11 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:18 signalQ.size:1 el->CURQ.size:11 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):180000
+  STATE: STATE:   L0:9 L1:10 T0:170000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:11 sizeAfterPop:10
+  CURQ: QMAX:24 Q: 13 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:19 signalQ.size:1 el->CURQ.size:10 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):194000
+  STATE: STATE:   L0:10 L1:11 T0:180000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:10 sizeAfterPop:9
+  CURQ: QMAX:24 Q: 14 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:20 signalQ.size:1 el->CURQ.size:9 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):202000
+  STATE: STATE:   L0:11 L1:13 T0:194000 D:8000 DIR:1 
+Debug CURQ: sizeBeforePop:9 sizeAfterPop:8
+  CURQ: QMAX:24 Q: 16 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:21 signalQ.size:1 el->CURQ.size:8 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):216000
+  STATE: STATE:   L0:13 L1:14 T0:202000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:8 sizeAfterPop:7
+  CURQ: QMAX:24 Q: 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:22 signalQ.size:1 el->CURQ.size:7 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):224000
+  STATE: STATE:   L0:14 L1:16 T0:216000 D:8000 DIR:1 
+enQ: with dir:1 m:15
+  m0:17 > m:15
+  toQ: 17 19 20 22 23 24 24 
+  toQ: 16 17 17 19 20 22 23 24 24 
+  toQ: QMAX:24 Q: 15 15 16 17 17 19 20 22 23 24 24 
+  CURQ: QMAX:24 Q: 15 15 16 17 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:23 signalQ.size:0 el->CURQ.size:11 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):224000
+  STATE: STATE:   L0:14 L1:16 T0:216000 D:8000 DIR:1 
+Debug CURQ: sizeBeforePop:11 sizeAfterPop:10
+  CURQ: QMAX:24 Q: 15 16 17 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:24 signalQ.size:0 el->CURQ.size:10 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):234000
+  STATE: STATE:   L0:16 L1:15 T0:224000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:10 sizeAfterPop:9
+  CURQ: QMAX:24 Q: 16 17 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:25 signalQ.size:0 el->CURQ.size:9 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):254000
+  STATE: STATE:   L0:15 L1:15 T0:234000 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:9 sizeAfterPop:8
+  CURQ: QMAX:24 Q: 17 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:26 signalQ.size:0 el->CURQ.size:8 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):264000
+  STATE: STATE:   L0:15 L1:16 T0:254000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:8 sizeAfterPop:7
+  CURQ: QMAX:24 Q: 17 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:27 signalQ.size:0 el->CURQ.size:7 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):278000
+  STATE: STATE:   L0:16 L1:17 T0:264000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:7 sizeAfterPop:6
+  CURQ: QMAX:24 Q: 19 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:28 signalQ.size:0 el->CURQ.size:6 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):298000
+  STATE: STATE:   L0:17 L1:17 T0:278000 D:20000 DIR:1 
+Debug CURQ: sizeBeforePop:6 sizeAfterPop:5
+  CURQ: QMAX:24 Q: 20 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:29 signalQ.size:0 el->CURQ.size:5 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):306000
+  STATE: STATE:   L0:17 L1:19 T0:298000 D:8000 DIR:1 
+Debug CURQ: sizeBeforePop:5 sizeAfterPop:4
+  CURQ: QMAX:24 Q: 22 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:30 signalQ.size:0 el->CURQ.size:4 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):320000
+  STATE: STATE:   L0:19 L1:20 T0:306000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:4 sizeAfterPop:3
+  CURQ: QMAX:24 Q: 23 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:31 signalQ.size:0 el->CURQ.size:3 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):328000
+  STATE: STATE:   L0:20 L1:22 T0:320000 D:8000 DIR:1 
+Debug CURQ: sizeBeforePop:3 sizeAfterPop:2
+  CURQ: QMAX:24 Q: 24 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:32 signalQ.size:0 el->CURQ.size:2 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):342000
+  STATE: STATE:   L0:22 L1:23 T0:328000 D:14000 DIR:1 
+Debug CURQ: sizeBeforePop:2 sizeAfterPop:1
+  CURQ: QMAX:24 Q: 24 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+MAIN: @i:33 signalQ.size:0 el->CURQ.size:1 el->UPQ.size:0 el->DNQ.size:16
+  getNext(signalQ):216000 getNext(el):352000
+  STATE: STATE:   L0:23 L1:24 T0:342000 D:10000 DIR:1 
+Debug CURQ: sizeBeforePop:1 sizeAfterPop:0
+Syncing @STATE m1:24 elDir:1 with NEXQ: top:21
+enQ: with dir:-1 m:24
+  m0:21 > m:24
+  toQ: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  toQ: 23 22 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  toQ: QMAX:21 Q: 24 24 23 22 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+Popping out from nexRawQ m1:24
+Popping out from nexRawQ m1:24
+Rotating.
+  CURQ: QMAX:21 Q: 23 22 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:34 signalQ.size:0 el->CURQ.size:18 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):372000
+  STATE: STATE:   L0:24 L1:24 T0:352000 D:20000 DIR:-1 
+Debug CURQ: sizeBeforePop:18 sizeAfterPop:17
+  CURQ: QMAX:21 Q: 22 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:35 signalQ.size:0 el->CURQ.size:17 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):382000
+  STATE: STATE:   L0:24 L1:23 T0:372000 D:10000 DIR:-1 
+Debug CURQ: sizeBeforePop:17 sizeAfterPop:16
+  CURQ: QMAX:21 Q: 21 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:36 signalQ.size:0 el->CURQ.size:16 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):390000
+  STATE: STATE:   L0:23 L1:22 T0:382000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:16 sizeAfterPop:15
+  CURQ: QMAX:21 Q: 21 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:37 signalQ.size:0 el->CURQ.size:15 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):400000
+  STATE: STATE:   L0:22 L1:21 T0:390000 D:10000 DIR:-1 
+Debug CURQ: sizeBeforePop:15 sizeAfterPop:14
+  CURQ: QMAX:21 Q: 20 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:38 signalQ.size:0 el->CURQ.size:14 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):420000
+  STATE: STATE:   L0:21 L1:21 T0:400000 D:20000 DIR:-1 
+Debug CURQ: sizeBeforePop:14 sizeAfterPop:13
+  CURQ: QMAX:21 Q: 19 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:39 signalQ.size:0 el->CURQ.size:13 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):430000
+  STATE: STATE:   L0:21 L1:20 T0:420000 D:10000 DIR:-1 
+Debug CURQ: sizeBeforePop:13 sizeAfterPop:12
+  CURQ: QMAX:21 Q: 17 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:40 signalQ.size:0 el->CURQ.size:12 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):438000
+  STATE: STATE:   L0:20 L1:19 T0:430000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:12 sizeAfterPop:11
+  CURQ: QMAX:21 Q: 16 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:41 signalQ.size:0 el->CURQ.size:11 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):446000
+  STATE: STATE:   L0:19 L1:17 T0:438000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:11 sizeAfterPop:10
+  CURQ: QMAX:21 Q: 14 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:42 signalQ.size:0 el->CURQ.size:10 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):454000
+  STATE: STATE:   L0:17 L1:16 T0:446000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:10 sizeAfterPop:9
+  CURQ: QMAX:21 Q: 13 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:43 signalQ.size:0 el->CURQ.size:9 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):462000
+  STATE: STATE:   L0:16 L1:14 T0:454000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:9 sizeAfterPop:8
+  CURQ: QMAX:21 Q: 11 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:44 signalQ.size:0 el->CURQ.size:8 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):470000
+  STATE: STATE:   L0:14 L1:13 T0:462000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:8 sizeAfterPop:7
+  CURQ: QMAX:21 Q: 10 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:45 signalQ.size:0 el->CURQ.size:7 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):478000
+  STATE: STATE:   L0:13 L1:11 T0:470000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:7 sizeAfterPop:6
+  CURQ: QMAX:21 Q: 8 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:46 signalQ.size:0 el->CURQ.size:6 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):486000
+  STATE: STATE:   L0:11 L1:10 T0:478000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:6 sizeAfterPop:5
+  CURQ: QMAX:21 Q: 7 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:47 signalQ.size:0 el->CURQ.size:5 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):494000
+  STATE: STATE:   L0:10 L1:8 T0:486000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:5 sizeAfterPop:4
+  CURQ: QMAX:21 Q: 5 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:48 signalQ.size:0 el->CURQ.size:4 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):502000
+  STATE: STATE:   L0:8 L1:7 T0:494000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:4 sizeAfterPop:3
+  CURQ: QMAX:21 Q: 4 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:49 signalQ.size:0 el->CURQ.size:3 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):510000
+  STATE: STATE:   L0:7 L1:5 T0:502000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:3 sizeAfterPop:2
+  CURQ: QMAX:21 Q: 3 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:50 signalQ.size:0 el->CURQ.size:2 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):518000
+  STATE: STATE:   L0:5 L1:4 T0:510000 D:8000 DIR:-1 
+Debug CURQ: sizeBeforePop:2 sizeAfterPop:1
+  CURQ: QMAX:21 Q: 3 
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty
+MAIN: @i:51 signalQ.size:0 el->CURQ.size:1 el->UPQ.size:0 el->DNQ.size:0
+  getNext(signalQ):216000 getNext(el):528000
+  STATE: STATE:   L0:4 L1:3 T0:518000 D:10000 DIR:-1 
+Debug CURQ: sizeBeforePop:1 sizeAfterPop:0
+Syncing @STATE m1:3 elDir:-1 with NEXQ: Empty.
+Rotating.
+  CURQ: QMAX:21 Q: Empty
+  UPQ: QMAX:0 Q: Empty
+  DNQ: QMAX:27 Q: Empty

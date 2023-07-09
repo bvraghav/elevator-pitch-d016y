@@ -1,6 +1,8 @@
-# Output & Error
-out.txt
-err.txt
+# Feh
+feh_*_filelist
+
+# Dist
+dist/
 
 # Prerequisites
 *.d
