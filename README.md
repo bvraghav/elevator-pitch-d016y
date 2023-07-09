@@ -29,6 +29,9 @@ here](#msg-input).  The corresponding out/err are
 stored in [`sample.out.txt`](./sample.out.txt) and
 [`sample.err.txt`](./sample.err.txt).
 
+When not available, `$(RUN)/in.txt` is a file-copy of
+[`./sample.in.txt`](./sample.in.txt).
+
 The `STDOUT` is saved in `$(RUN)/out.txt`, *i.e.*
 `dist/run/out.txt`.
 
