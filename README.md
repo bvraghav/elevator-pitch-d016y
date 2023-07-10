@@ -162,8 +162,7 @@ intermediary level `3*k`.  This is modelled as an edge
 `[3*k-1, 3*k+1]` with duration `DS`.
 
 The signal propagation and processing may incur some
-latency which is configurable (say empirically) as
-`LAT`.
+latency which is configurable as `LAT`.
 
 <a id="el-directionality"></a>
 ### Directionality ###
