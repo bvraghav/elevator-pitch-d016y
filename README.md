@@ -44,9 +44,9 @@ Divide the elevator traversal problem into decision
 sub-problems, and conquer by deferring the decision
 till the end of every step.  The fundamental
 observation is that at some location before reaching a
-given level `L`, the elevator should decide whether to
-fork (change state from uniform speed to deceleration)
-in order to stop at `L` or not.
+given level `L`, the elevator should decide whether or
+not to fork (change state from uniform speed to
+deceleration) in order to stop at `L`.
 
 This solution broadly defines,
 1. Traversal between every successive levels `[L,L+1]`
@@ -72,8 +72,9 @@ approach.
 
 Another encoded solution is to maintain three queues,
 one for each direction of traversal at any given
-instant.  That is, at any given level `M=3*L+K%3`,
-maintain a queue for each of the following traversal
+instant.  That is, for any given level `M=3*L+K%3`
+where the car is, maintain a queue for each of the
+following traversal,
 + From `M` to a signalled far-end in the direction of
   current traversal, eg. towards `3*(LMAX-1)` for `UP`;
 + From a signalled near-end to far-end in the inverse
