@@ -111,9 +111,9 @@ This would entail only a change of flag and queue swap
 <a id="prog-setup"></a>
 ## Programmatic setup ##
 
-When the program starts, a batch input from cli
-emulates [a message queue `SignalQ`](#ds-signal),
-to read and parse [user side messages](#msg-input).
+On startup, the program would read and parse [user side
+messages](#msg-input) and emulate [a message queue
+`SignalQ`](#ds-signal).
 
 The elevator is essentially modelled as a tuple of
 [`CONFIG`](#ds-config), [`STATE`](#ds-state) and a list
