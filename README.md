@@ -238,7 +238,7 @@ following four conditions arise,
 
 The [directionality trick](#el-directionality) allows
 for a single function definition by storing an extra
-bit of information.  Practically 4-bytes, perhaps.
+bit of information.  Practically it's 4-bytes, perhaps.
 
 <a id="ds-state"></a>
 ### State ###
