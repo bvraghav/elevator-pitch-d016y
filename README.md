@@ -92,13 +92,14 @@ This would entail only a change of flag and queue swap
    and code organisation here, make it straight-forward
    and easy.
 2. The code here makes a simplified assumption that
-   duplicate target levels are inhibited before
-   reaching the system.  It would be trivial to extend
-   the system to include this functionality.  One way
-   would be to add a couple of bitsets to the state
-   vector, one for each direction, and flag it on for
-   each entry popped out the signalQ, and flag it off
-   for of each entry popped out of the elevator LvlQ. 
+   signals to/from a duplicate target level are
+   inhibited before reaching the system.  It would be
+   trivial to extend the system to include this
+   functionality.  One way would be to add a couple of
+   bitsets to the state vector, one for each direction,
+   and flag it on for each entry popped out the
+   signalQ, and flag it off for of each entry popped
+   out of the elevator LvlQ.
 3. On initialisation, the elevator is idiosyncratic to
    rest twice.  It's a state reset artefact, which may
    hopefully be eliminated with an extra eye to detail.
