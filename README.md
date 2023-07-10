@@ -297,8 +297,7 @@ specification.
 
 This project uses the STL as is, and composes them
 using tuples.  Novel/ adhoc structures were not
-required.  The semantics may be a little strange to see
-first time. E.g., A signal is defined as
+required.  A signal queue is defined as follows.
 
 ```c++
 // Signal -------------------------------------------
@@ -316,6 +315,11 @@ typedef std::vector<SignalT> SignalV;
 typedef std::priority_queue<
   SignalT,SignalV,std::greater<SignalT>
   > SignalQ;
+
+// --------------------------------------------------
+// Signal
+// --------------------------------------------------
+bool operator <(SignalT const&,  SignalT const&);
 ```
 
 A signal is defined as tuple and its members are
