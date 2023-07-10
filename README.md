@@ -134,11 +134,11 @@ The movement of an elevator is modelled as a graph
 traversal, where each physical level: `0:"G", 1:"L1",
 ...` is mapped onto a meta-level that is indexed as
 `m=3*l`, so that `0:"G", 3:"L1",...` and the state of
-traversal or rest is modelled as edges between the meta
-levels and their duration of travel as edge weights.
-The elevator may *stay at rest* of a pre-defined
-repeatable duration `DR`, represented as a loop
-`[3*m,3*m]`.
+traversal (or rest) is modelled as edges between the
+meta levels and their duration of travel as edge
+weights.  The elevator may *stay at rest* for a
+predefined repeatable duration `DR`, represented as a
+loop `[3*m,3*m]`.
 
 The elevator may move between two successive of
 successive physical levels `[3*m, 3*(m+1)]` in three
