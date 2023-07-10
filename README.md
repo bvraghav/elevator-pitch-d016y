@@ -133,10 +133,16 @@ transferred to the respective processor.
 The movement of an elevator is modelled as a graph
 traversal, where each physical level: `0:"G", 1:"L1",
 ...` is mapped onto a meta-level that is indexed as
-`m=3*l`, so that `0:"G", 3:"L1",...` and the state of
-traversal (or rest) is modelled as edges between the
-meta levels and their duration of travel as edge
-weights.  The elevator may *stay at rest* for a
+`m=3*l`, so that `0:"G", 3:"L1",...`.  The total number
+of physical levels in the building is abstracted as
+`LMAX`, so that `0,1,...,LMAX-1` represent the physical
+levels, and `0,3,...,3*(LMAX-1)` represent the
+corresponding meta-levels.
+
+
+The state of traversal (or rest) is modelled as edges
+between the meta levels and their duration of travel as
+edge weights.  The elevator may *stay at rest* for a
 predefined repeatable duration `DR`, represented as a
 loop `[3*m,3*m]`.
 
@@ -154,11 +160,6 @@ When moving between two non successive levels,
 `[3*i,3*j]`, the elevator would bypass *(skip)* any
 intermediary level `3*k`.  This is modelled as an edge
 `[3*k-1, 3*k+1]` with duration `DS`.
-
-The total number of physical levels in the building is
-abstracted as `LMAX`, so that `0,1,...,LMAX-1` represent
-the physical levels, and `0,3,...,3*(LMAX-1)` represent
-the corresponding meta-levels.
 
 The signal propagation and processing may incur some
 latency which is configurable (say empirically) as
