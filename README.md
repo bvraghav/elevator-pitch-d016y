@@ -62,13 +62,12 @@ This solution broadly defines,
 6. Assumes that the signal propagation and computation
    may incur a max latency, configurable as `LAT`.
   
-We may see each signal of stoppage at any level may be
-treated as a destination insertion into a traversal
-path, and thus adding the destination and shortest
-connecting paths.  The advantage of this solution is
-that while maintaining the graph structure, the optimal
-paths are baked into the algorithm like a greedy
-approach.
+We may see that each signal of stoppage would trigger a
+destination insertion into a traversal path, and thus
+adding the destination and shortest connecting paths.
+The advantage of this solution is that while
+maintaining the graph structure, the optimal paths are
+baked into the algorithm like a greedy approach.
 
 Another encoded solution is to maintain three queues,
 one for each direction of traversal at any given
