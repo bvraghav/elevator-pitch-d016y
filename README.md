@@ -242,9 +242,9 @@ bit of information.  Practically it's 4-bytes, perhaps.
 
 <a id="ds-state"></a>
 ### State ###
-The elevator state represents the traversal of an edge
-in the current journey.  For rest, the last physical
-level reached in looped-over as many times as required.
+The elevator state represents the current edge of
+traversal.  In case of rest, the last physical level
+reached in looped-over as many times as required.
 
 ```c++
   enum ElStateIndexEnum { ELDIR, L0, L1, T0, D };
