@@ -222,8 +222,9 @@ The queues are rotated once the current queue is empty,
 but the current queue is synced with the next queue,
 before rotating.  That is, if the start of next queue
 lies ahead in the current direction, then the start of
-next queue is pushed into the current queue without
-rotation.
+next queue is pushed into the current queue, thus
+deferring rotation for until the current queue becomes
+empty again.
 
 To enqueue a physical level `(3*M)` into a queue, the
 following four conditions arise,
