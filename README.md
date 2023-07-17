@@ -50,7 +50,8 @@ deceleration) in order to stop at `L`.
 
 This solution broadly defines,
 1. Traversal between every successive levels `[L,L+1]`
-  is mapped to `[3*L, 3*L+1, 3*(L+1)-1, 3*(L+1)]`,
+  is mapped to a sub-path `[3*L, 3*L+1, 3*(L+1)-1,
+  3*(L+1)]`,
 2. `[3*L, 3*L+1]` represents an accelerating car
      state;
 3. `[3*L+1, 3*(L+1)-1]` represents car at uniform
@@ -62,9 +63,9 @@ This solution broadly defines,
 6. Assumes that the signal propagation and computation
    may incur a max latency, configurable as `LAT`.
   
-We may see that each signal of stoppage would trigger a
-destination insertion into a traversal path, and thus
-adding the destination and shortest connecting paths.
+What follows is that each signal of stoppage would
+trigger a destination insertion into a traversal path,
+and if required, shortest connecting paths along with.
 The advantage of this solution is that while
 maintaining the graph structure, the optimal paths are
 baked into the algorithm like a greedy approach.
@@ -106,7 +107,8 @@ This would entail only a change of flag and queue swap
 4. An artificial [limit of
    `N=2000`](./src/bvr/main.cpp#L22) has been placed on
    number of loops on main for guarding against
-   never-ending loops. This can be lifted as necessary.
+   never-ending loops. This can be lifted off as
+   necessary.
 
 <a id="prog-setup"></a>
 ## Programmatic setup ##
@@ -133,7 +135,7 @@ transferred to the respective processor.
 The movement of an elevator is modelled as a graph
 traversal, where each physical level: `0:"G", 1:"L1",
 ...` is mapped onto a meta-level that is indexed as
-`m=3*l`, so that `0:"G", 3:"L1",...`.  The total number
+`m=3*l`, that is `0:"G", 3:"L1",...`.  The total number
 of physical levels in the building is abstracted as
 `LMAX`, so that `0,1,...,LMAX-1` represent the physical
 levels, and `0,3,...,3*(LMAX-1)` represent the
@@ -146,15 +148,14 @@ edge weights.  The elevator may *stay at rest* for a
 predefined repeatable duration `DR`, represented as a
 loop `[3*m,3*m]`.
 
-The elevator may move between two successive of
-successive physical levels `[3*m, 3*(m+1)]` in three
-stages.  First, by accelerating (*ease* into its
-uniform speed) for a duration of `DE` thus reaching the
-meta node `3*m+1`.  Second, moving with a *uniform
-speed* for a duration `DU` culminating in meta node
-`3*(m+1)-1`.  And finally decelerating (*ease* again
-into rest) for the duration of `DE`, reaching the level
-`3*(m+1)`.
+The elevator may move between two successive physical
+levels `[3*m, 3*(m+1)]` in three stages.  First, by
+accelerating (*ease* into its uniform speed) for a
+duration of `DE` thus reaching the meta node `3*m+1`.
+Second, moving with a *uniform speed* for a duration
+`DU` culminating in meta node `3*(m+1)-1`.  And finally
+decelerating (*ease* again into rest) for the duration
+of `DE`, reaching the level `3*(m+1)`.
 
 When moving between two non successive levels,
 `[3*i,3*j]`, the elevator would bypass *(skip)* any
@@ -212,11 +213,10 @@ program
 ### Destination Queues ###
 The elevator model stores three queues, one for current
 direction of traversal, and one each for next `UP` and
-`DOWN` directions.  Each queue that stores a list of
-all the destinations (meta-levels) further ahead.  It
-tells (in constant time) what is the next destination
-meta-level, and the maximum meta-level in the
-respesective queue.
+`DOWN` directions.  Each queue stores a list of all the
+destinations (meta-levels) further ahead.  It tells (in
+constant time) what is the next destination meta-level,
+and the maximum meta-level in the respesective queue.
 
 The queues are rotated once the current queue is empty,
 but the current queue is synced with the next queue,
@@ -244,7 +244,7 @@ bit of information.  Practically it's 4-bytes, perhaps.
 ### State ###
 The elevator state represents the current edge of
 traversal.  In case of rest, the last physical level
-reached in looped-over as many times as required.
+reached is looped-over as many times as required.
 
 ```c++
   enum ElStateIndexEnum { ELDIR, L0, L1, T0, D };
@@ -297,28 +297,21 @@ specification.
 
 This project uses the STL as is, and composes them
 using tuples.  Novel/ adhoc structures were not
-required.  A signal queue is defined as follows.
+required.  For example, a signal queue is defined as a
+min heap as follows; and the overloaded operator `<`
+provides underlying definition for the comparator
+`std::greater`.
 
 ```c++
-// Signal -------------------------------------------
-enum WhereEnum { FROM, TO };
-enum DirEnum { UP=1, DN=-1, CUR=0 };
-enum SignalIndexEnum { LVL, WHERE, SIGDIR, TS };
-typedef std::uint64_t TsT;
-typedef std::uint16_t LvlT;
-typedef std::vector<LvlT> LvlV;
-typedef std::tuple<LvlT,WhereEnum,DirEnum,TsT>
-SignalT;
+// Signal Queue --------------------------------------
 typedef std::vector<SignalT> SignalV;
-
-// Signal Queue -------------------------------------
 typedef std::priority_queue<
   SignalT,SignalV,std::greater<SignalT>
   > SignalQ;
 
-// --------------------------------------------------
+// ----------------------------------------------------
 // Signal
-// --------------------------------------------------
+// ----------------------------------------------------
 bool operator <(SignalT const&,  SignalT const&);
 ```
 
@@ -326,6 +319,18 @@ A signal is defined as tuple and its members are
 accessed using indexed member names as follows,
 
 ```c++
+// Signal ---------------------------------------------
+enum WhereEnum { FROM, TO };
+enum DirEnum { UP=1, DN=-1, CUR=0 };
+typedef std::uint64_t TsT;
+typedef std::uint16_t LvlT;
+typedef std::vector<LvlT> LvlV;
+
+enum SignalIndexEnum { LVL, WHERE, SIGDIR, TS };
+typedef std::tuple<LvlT,WhereEnum,DirEnum,TsT>
+SignalT;
+
+// Usage ----------------------------------------------
 auto ts = std::get<TS>(signal);
 auto &tsRef = std::get<TS>(signal);
 
@@ -336,7 +341,7 @@ std::cerr << "New TS:" << tsRef << endl;
 ```
 
 Or using a destructuring syntax, respectively for a
-copy or reference, as in here:
+copy or reference, as in here (requires C++-17):
 ```c++
 auto [l, std::ignore, dir, ts] = signal;
 auto &[lRef, wRef, dirRef, tsRef] = signal;
@@ -344,7 +349,7 @@ auto &[lRef, wRef, dirRef, tsRef] = signal;
 
 ## Code Organisation ##
 
-All structure definitions are enlisted in
+All structure and function definitions are enlisted in
 [`elevator.hpp`](./src/bvr/elevator.hpp)
 
 [`main.cpp`](./src/bvr/main.cpp) encodes delegating a
